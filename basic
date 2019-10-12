@@ -1,0 +1,2 @@
+1：凡是设置了position:absolute; float:left/right；流览器会内部把元素转化为inline-block；
+2：行级元素只能套行级元素，块级元素能套任何元素。但是p内不能套div，a不能套a.
