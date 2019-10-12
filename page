@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>position</title>
+    <meta content="position" name="keywords">
+    <style>
+       /* Margin-塌陷解决:
+        1:父级加一个border-top（不建议用)；
+        2：bfc(block format content)规则(只能弥补)：
+        1position:absolutely;
+        2:display:inline-block;
+        3:float:left/right;
+        4:overflow:hidden;*/
+       *{
+           margin: 0;
+           padding: 0;
+       }
+
+        .fa1{
+            margin:auto;
+            width: 400px;
+            height:400px;
+            border:1px solid black;
+        }
+        .len{
+            width: 400px;
+            height:800px;
+            border:1px solid black;
+            float: right;
+        }
+        .son1,.son3,.son2,.son4{
+            width: 100px;
+            height: 100px;
+            background:red;
+        }
+        .son1>.son1s1{
+            width: 10%;
+            height: 20%;
+            background: black;
+           /* margin-top: 10px;*/ /*Margin-塌陷*/
+        }
+        .son2,.son4{
+            background: blue;
+        }
+
+        /*开始准备position的元素*/
+       .son2>.son2s1{
+           width: 1%;
+           height: 30%;
+           background:green;
+       }
+       .son2>.po2{
+           width: 50%;
+           height: 20%;
+           background:palevioletred;
+       }
+       .son4>.son4s1{
+           margin-left: 10px;
+           width: 40%;
+           height: 20%;
+           background: yellow;
+       }
+       /*Position:
+
+       fixed;不再占有原有层；位置和大小都会以原来位置当作起点，相对可视化窗口进行调解,
+
+       relative;常用来定位。不再占有原有层，变为可移层，相对最近有定位的进行定位。
+       同时先于float显示，使z-index失去效果。
+
+       absolute:偏移量失效，位置和大小都会以原来位置当作起点，相对可视化窗口进行调解
+
+       static;用于清除前后元素带来的浮动影响。用于块级元素
+        */
+       .son2>.po1{
+           opacity: 0.5;
+           position: fixed; /*位置和大小都会，相对可视化窗口进行调解,*/
+       }
+       .son4>.po1{
+           position: relative;
+           opacity: 0.2;
+       }
+
+       .son4>.po2{
+           float: left;/*后于relative显示*/
+           z-index: 10;
+           width: 60%;
+           background: red;
+           opacity:0.5 ;
+       }
+       .son4>.po3{
+           position:absolute;/*位置和大小都会以原来位置当作起点，相对可视化窗口进行调解*/
+           opacity: 0.8;
+           float: left;/*失去效果*/
+           z-index: 1;
+       }
+
+
+        /*页面浮动的相关问题解决*/
+       /*float先于普通页面显示*/
+        .len>.dis1{
+            z-index: 1;
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+       .len>.dis1,.len>.dis3{
+           float: left;
+       }
+       .len>.dis2{
+           position: relative;
+           z-index: 2;
+           width: 200px;
+           height: 200px;
+           background: blue;
+       }
+       .len>.dis3{
+           position: relative;
+           width: 100px;
+           height: 200px;
+           background:green;
+           clear: none;/*清楚浮动效果，但是会使其位于float元素的一层*/
+           z-index: 20;
+       }
+
+
+
+    </style>
+</head>
+<body>
+<!--margin-top问题弥补以及position关系详解-->
+<!--页面浮动的相关问题解决-->
+<div class="fa1">
+    <div class="son1">
+        <div class="son1s1"></div>
+    </div>
+    <div class="son2">
+        <div class="son2s1 po1"></div>
+        <div class="son2s1 po2"></div>
+    </div>
+    <div class="son3"></div>
+    <div class="son4">
+        <div class="son4s1 po1"></div>
+        <div class="son4s1 po2"></div>
+        <div class="son4s1 po3"></div>
+    </div>
+</div>
+<div class="len">
+    <div class="dis1"></div>
+    <div class="dis2"></div>
+    <div class="dis3"></div>
+</div>
+
+</body>
+</html>
