@@ -1,2 +1,14 @@
 1：凡是设置了position:absolute; float:left/right；流览器会内部把元素转化为inline-block；
 2：行级元素只能套行级元素，块级元素能套任何元素。但是p内不能套div，a不能套a.
+3：组合选择器：
+    A,B:多元素选择器，同时匹配A,B所有元素。
+    A B:后代元素选择器，选择A的所有后代B。
+    A>B:子元素选择器，选择A的所有子代B。
+    A+B:同级元素选择器，选择A后的同级元素B。
+4：Css权重：256进制
+<p>!important---:Inifinity</p>
+<p>行间样式---:1000</p>
+<p>id---100:<span>#XX</span></p>
+<p>class|属性|伪类--10:<span>.XX;</span></p>
+<p>其他:-->1:<span>p,div,</span></p>
+<p>通配符-->0:<span>*</span></p>
