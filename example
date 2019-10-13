@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>choose</title>
+    <meta content="choose" name="keywords">
+    <style>
+        /*溢出容器，打点显示*/
+        .div8>.text-8{
+            font-size: 10px;
+            width: 40px;
+            height: 40px;
+            line-height: 20px;
+            border: 1px solid black;
+            /*单行文本三件套*/
+            white-space: nowrap;/*不分行*/
+            overflow: hidden;
+            text-overflow: ellipsis;/*溢出部分点号显示*/
+        }
+        
+        
+    </style>
+</head>
+<body>
+
+
+<!--溢出容器，打点显示-->
+<div class="div8">
+    <!--单行文本-->
+    <p class="text-8">
+        这是一段单行文本的测试文本
+    </p>
+    <!--多行文本,移动端技术实现写，pc段手打-->
+</div>
+
+
+
+
+</body>
+</html>
